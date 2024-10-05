@@ -49,8 +49,6 @@ provider "aws" "configurations" {
   }
 }
 
-
-
 provider "kubernetes" "configurations" {
   for_each = var.regions
   config { 

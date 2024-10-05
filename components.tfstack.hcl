@@ -56,7 +56,6 @@ component "k8s-rbac" {
   }
 }
 
-
 # K8s Addons - aws load balancer controller, coredns, vpc-cni, kube-proxy
 component "k8s-addons" {
   for_each = var.regions
