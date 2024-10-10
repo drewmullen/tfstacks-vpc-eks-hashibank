@@ -1,5 +1,5 @@
 identity_token "aws" {
-  audience = ["aws.workload.identity"]
+  audience = ["<INSERT YOUR AUDIENCE HERE>"]
 }
 
 identity_token "k8s" {
@@ -7,12 +7,12 @@ identity_token "k8s" {
 }
 
 locals {
-  role_arn = "arn:aws:iam::225401527358:role/stacks-aws-testing"
+  role_arn = "<INSERT YOUR ARN HERE>"
   tfc_kubernetes_audience = "k8s.workload.identity"
   tfc_hostname = "https://app.terraform.io"
-  organization_name = "stacks-2024-demo"
-  eks_clusteradmin_arn = "arn:aws:iam::225401527358:role/aws_sarah.hernandez_test-developer"
-  eks_clusteradmin_username = "aws_sarah.hernandez_test-developer"
+  organization_name = "<INSERT HCP TERRAFORM ORG NAME>"
+  eks_clusteradmin_arn = "arn:aws:iam::<INSERT AWS ACCOUNT NUMBER>:<INSERT ROLE NAME TO BE CREATED>"
+  eks_clusteradmin_username = "<INSERT USERNAME TO BE CREATED>"
 }
 
 deployment "development" {
@@ -50,7 +50,7 @@ deployment "production" {
 
     #EKS Cluster
     kubernetes_version = "1.30"
-    cluster_name = "eksprod05"
+    cluster_name = "eksprod01"
     
     #EKS OIDC
     tfc_kubernetes_audience = local.tfc_kubernetes_audience
@@ -76,7 +76,7 @@ deployment "disaster-recovery" {
 
     #EKS Cluster
     kubernetes_version = "1.30"
-    cluster_name = "eksdr05"
+    cluster_name = "eksdr01"
     
     #EKS OIDC
     tfc_kubernetes_audience = local.tfc_kubernetes_audience
@@ -92,10 +92,10 @@ deployment "disaster-recovery" {
   }
 }
 
-orchestrate "auto_approve" "safe_plans_dev" {
- check {
-     # Only auto-approve in development environment if no resources are being removed
-     condition = context.plan.changes.remove == 0 && context.plan.deployment == deployment.development
-     reason = "Plan has ${context.plan.changes.remove} resources to be removed."
- }
-}
+# orchestrate "auto_approve" "safe_plans_dev" {
+#  check {
+#      # Only auto-approve in development environment if no resources are being removed
+#      condition = context.plan.changes.remove == 0 && context.plan.deployment == deployment.development
+#      reason = "Plan has ${context.plan.changes.remove} resources to be removed."
+#  }
+# }
