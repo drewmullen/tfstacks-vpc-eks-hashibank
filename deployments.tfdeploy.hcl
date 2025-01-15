@@ -42,6 +42,7 @@ deployment "development" {
     #K8S
     k8s_identity_token = identity_token.k8s.jwt
     namespace          = "hashibank"
+    deployment_name    = context.plan.deployment.deployment_name
 
     #HCP
     hcp_client_id     = store.varset.hcp_creds.HCP_CLIENT_ID
@@ -71,6 +72,7 @@ deployment "production" {
     #K8S
     k8s_identity_token = identity_token.k8s.jwt
     namespace          = "hashibank"
+    deployment_name    = context.plan.deployment.deployment_name
 
     #HCP
     hcp_client_id     = store.varset.hcp_creds.HCP_CLIENT_ID
@@ -100,6 +102,7 @@ deployment "disaster-recovery" {
     #K8S
     k8s_identity_token = identity_token.k8s.jwt
     namespace          = "hashibank"
+    deployment_name    = context.plan.deployment.deployment_name
 
     #HCP
     hcp_client_id     = store.varset.hcp_creds.HCP_CLIENT_ID

@@ -120,6 +120,7 @@ component "deploy-hashibank2" {
 
   inputs = {
     hashibank2_namespace = component.k8s-namespace[each.value].namespace
+    deployment_name = var.deployment_name
   }
 
   providers = {

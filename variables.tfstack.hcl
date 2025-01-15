@@ -74,6 +74,8 @@ variable "eks_clusteradmin_username" {
   type = string
 }
 
+variable "deployment_name" {}
+
 variable "hcp_client_id" {
   description = "HCP Client ID"
   type        = string

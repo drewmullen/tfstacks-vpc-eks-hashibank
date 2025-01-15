@@ -1,7 +1,7 @@
 # hcp packer data source
 data "hcp_packer_artifact" "hashibank"{
   bucket_name = "hashibank-alpine-dockerfile"
-  channel_name = context.plan.deployment.deployment_name
+  channel_name = var.deployment_name
   platform = "docker"
   region = "docker"
 }
