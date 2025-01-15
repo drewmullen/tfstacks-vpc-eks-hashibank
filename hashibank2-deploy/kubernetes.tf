@@ -7,9 +7,9 @@ data "hcp_packer_artifact" "hashibank"{
 }
 
 # hashibank deployment
-resource "kubernetes_deployment" "hashibank" {
+resource "kubernetes_deployment" "hashibank2" {
   metadata {
-    name = "hashicafe"
+    name = "hashibank2"
     namespace = var.hashibank2_namespace
   }
 
@@ -18,14 +18,14 @@ resource "kubernetes_deployment" "hashibank" {
 
     selector {
       match_labels = {
-        app = "hashibank"
+        app = "hashibank2"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "hashicafe"
+          app = "hashibank2"
         }
       }
 
@@ -93,7 +93,7 @@ resource "kubernetes_ingress_v1" "hashibank" {
 
           backend {
             service {
-              name = "hashibank"
+              name = "hashibank2"
               port {
                 number = 8080
               }
@@ -107,17 +107,17 @@ resource "kubernetes_ingress_v1" "hashibank" {
 
 
 # hashibank service
-resource "kubernetes_service_v1" "hashibank" {
+resource "kubernetes_service_v1" "hashibank2" {
   depends_on = [time_sleep.wait_60_seconds]
   wait_for_load_balancer = false
   metadata {
-    name      = "hashibank"
+    name      = "hashibank2"
     namespace = var.hashibank2_namespace
   }
 
   spec {
     selector = {
-      app = "hashibank"
+      app = "hashibank2"
     }
 
     port {
