@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "hashibank" {
 
       spec {
         container {
-          image = data.hcp_packer_artifact.hashibank.labels["ImageDigest"].value
+          image = data.hcp_packer_artifact.hashibank.labels["ImageDigest"]
           name  = "hashibank"
 
           args = [
