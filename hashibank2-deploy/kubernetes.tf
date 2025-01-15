@@ -62,18 +62,18 @@ resource "kubernetes_deployment" "hashibank2" {
 }
 
 resource "time_sleep" "wait_60_seconds" {
-  depends_on = [kubernetes_deployment.hashibank]
+  depends_on = [kubernetes_deployment.hashibank2]
 
   create_duration = "60s"
   # allow for ingress controller to be ready
 }
 
 #hashibank ingress
-resource "kubernetes_ingress_v1" "hashibank" {
+resource "kubernetes_ingress_v1" "hashibank2" {
   depends_on = [time_sleep.wait_60_seconds]
   wait_for_load_balancer = false
   metadata {
-    name        = "hashibank"
+    name        = "hashibank2"
     namespace = var.hashibank2_namespace
     annotations = {
       "kubernetes.io/ingress.class"             = "alb"
