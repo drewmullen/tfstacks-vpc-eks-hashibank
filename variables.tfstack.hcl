@@ -81,6 +81,7 @@ variable "deployment_name" {
 variable "hcp_client_id" {
   description = "HCP Client ID"
   type        = string
+  sensitive   = true
   ephemeral   = true
 }
 
