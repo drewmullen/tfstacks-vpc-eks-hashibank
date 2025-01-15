@@ -3,19 +3,19 @@ variable "regions" {
 }
 
 variable "aws_identity_token" {
-  type = string
+  type      = string
   ephemeral = true
   sensitive = true
 }
 
 variable "k8s_identity_token" {
-  type = string
+  type      = string
   ephemeral = true
   sensitive = true
 }
 
 variable "workload_idp_name" {
-  type = string
+  type    = string
   default = "tfstacks-workload-identity-provider"
 }
 
@@ -33,7 +33,7 @@ variable "role_arn" {
 }
 
 variable "vpc_name" {
-  type = string 
+  type = string
 }
 
 variable "vpc_cidr" {
@@ -41,17 +41,17 @@ variable "vpc_cidr" {
 }
 
 variable "kubernetes_version" {
-  type = string
+  type    = string
   default = "1.29"
 }
 
 variable "cluster_name" {
-  type = string
+  type    = string
   default = "eks-cluster"
 }
 
 variable "namespace" {
-  type = string
+  type    = string
   default = "hashibank"
 }
 
@@ -76,13 +76,13 @@ variable "eks_clusteradmin_username" {
 
 variable "hcp_client_id" {
   description = "HCP Client ID"
-  type     = string
-  ephemeral = true
+  type        = string
+  ephemeral   = true
 }
 
 variable "hcp_client_secret" {
   description = "HCP Client Secret"
-  type     = string
-  sensitive = true
-  ephemeral = true
+  type        = string
+  sensitive   = true
+  ephemeral   = true
 }
