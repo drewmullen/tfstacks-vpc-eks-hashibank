@@ -74,3 +74,15 @@ variable "eks_clusteradmin_username" {
   type = string
 }
 
+variable "hcp_client_id" {
+  description = "HCP Client ID"
+  type     = string
+  ephemeral = true
+}
+
+variable "hcp_client_secret" {
+  description = "HCP Client Secret"
+  type     = string
+  sensitive = true
+  ephemeral = true
+}

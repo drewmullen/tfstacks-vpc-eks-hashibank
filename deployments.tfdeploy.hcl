@@ -6,6 +6,11 @@ identity_token "k8s" {
   audience = ["k8s.workload.identity"]
 }
 
+store "varset" "hcp_creds" {
+  id = "varset-YHGGhMVSnCtRJFTe"
+  category = "env"
+}
+
 locals {
   role_arn = "arn:aws:iam::710320297709:role/stacks-milesjh-sandbox-infra-cloud-demo-stacks"
   tfc_kubernetes_audience = "k8s.workload.identity"
@@ -37,6 +42,10 @@ deployment "development" {
     #K8S
     k8s_identity_token = identity_token.k8s.jwt
     namespace = "hashibank"
+
+    #HCP
+    hcp_client_id = store.varset.hcp_creds.HCP_CLIENT_ID
+    hcp_client_secret = store.varset.hcp_creds.HCP_CLIENT_SECRET
   }
 }
 
@@ -63,6 +72,9 @@ deployment "production" {
     k8s_identity_token = identity_token.k8s.jwt
     namespace = "hashibank"
 
+    #HCP
+    hcp_client_id = store.varset.hcp_creds.HCP_CLIENT_ID
+    hcp_client_secret = store.varset.hcp_creds.HCP_CLIENT_SECRET
   }
 }
 
@@ -89,6 +101,9 @@ deployment "disaster-recovery" {
     k8s_identity_token = identity_token.k8s.jwt
     namespace = "hashibank"
 
+    #HCP
+    hcp_client_id = store.varset.hcp_creds.HCP_CLIENT_ID
+    hcp_client_secret = store.varset.hcp_creds.HCP_CLIENT_SECRET
   }
 }
 

@@ -125,5 +125,6 @@ component "deploy-hashibank2" {
   providers = {
     kubernetes  = provider.kubernetes.oidc_configurations[each.value]
     time = provider.time.this
+    hcp = provider.hcp.this
   }
 }

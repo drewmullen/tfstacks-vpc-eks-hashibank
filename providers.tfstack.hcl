@@ -34,6 +34,11 @@ required_providers {
     version = "~> 2.4"
   }
 
+  hcp = {
+    source = "hashicorp/hcp"
+    version = "~> 0.101.0"
+  }
+
 }
 
 provider "aws" "configurations" {
@@ -84,3 +89,9 @@ provider "kubernetes" "this" {}
 provider "time" "this" {}
 provider "tls" "this" {}
 provider "local" "this" {}
+provider "hcp" "this" {
+  config {
+    client_id = var.hcp_client_id
+    client_secret = var.hcp_client_secret
+  }
+}
