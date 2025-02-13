@@ -5,7 +5,7 @@ When planning this stack for the first time, only the VPC and EKS cluster will b
 
 ## Pre-requisites
 
-* You must enable AWS OIDC authentication for your stack following instructions at: https://developer.hashicorp.com/terraform/language/stacks/authenticate 
+* You must enable AWS OIDC authentication for your stack following instructions at: https://developer.hashicorp.com/terraform/language/stacks/deploy/authenticate
 
 * Edit the deployments.tfdeploy.hcl file to fill in the following missing information:
   * INSERT YOUR AUDIENCE HERE: the audience you configured when setting up OIDC authentication
